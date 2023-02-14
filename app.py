@@ -77,5 +77,13 @@ def delete(todo_id):
     return redirect(url_for('home'))
 
 
+# Any errors/exceptions will be caught by the below decorator function.
+# Below function will render to the error template showing the details.
+# Users can directly go to the homepage from the error template.
+@app.errorhandler(Exception)
+def handle_exception(e):
+    return render_template('error.html', e=e)
+
+
 if __name__ == '__main__':
     app.run(debug=True)
