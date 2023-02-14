@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Task</title>
+</head>
+<body>
+<center>
+    <h1>Update Task</h1>
+    <br><br>
+    <form action="/edit/{{ todo.todo_id }}" method="post">
+        <div>
+            <input type="text" name="name" value="{{ todo.name }}">
+            <button type="submit">Update</button>
+        </div>
+    </form>
+</center>
+</body>
+</html>

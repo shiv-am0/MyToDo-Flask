@@ -47,6 +47,25 @@ def update(todo_id):
     return redirect(url_for('home'))
 
 
+# Updating the task when '/update' endpoint is hit.
+# Changes to the database and the display table are made simultaneously.
+# NOTE: Record ID is required to delete a record.
+@app.route('/edit/<int:todo_id>', methods=['GET', 'POST'])
+def edit(todo_id):
+    # When the user is updating a record, this endpoint is hit with a 'POST' request from the 'update' page.
+    # User provides the 'todo_id' in order to make changes to that very record.
+    if request.method == 'POST':
+        name = request.form.get('name')
+        todo = Todo.query.get(todo_id)
+        todo.name = name
+        db.session.add(todo)
+        db.session.commit()
+        return redirect(url_for('home'))
+
+    todo = Todo.query.get(todo_id)
+    return render_template('update.html', todo=todo)
+
+
 # Deleting the task when '/delete' endpoint is hit.
 # Changes to the database and the display table are made simultaneously.
 # NOTE: Record ID is required to delete a record.
@@ -59,4 +78,4 @@ def delete(todo_id):
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=8083)
+    app.run(debug=True)

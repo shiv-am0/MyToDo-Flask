@@ -39,10 +39,13 @@
                     <td>Done</td>
                 {% endif %}
                 <td>
-                    <button><a href="/status/{{ todo.todo_id }}">Update Status</a></button>
+                    <button><a href="/status/{{ todo.todo_id }}">Change Status</a></button>
                 </td>
                 <td>
                     <button><a href="/delete/{{ todo.todo_id }}">Delete</a></button>
+                </td>
+                <td>
+                    <button><a href="/edit/{{ todo.todo_id }}">Edit</a></button>
                 </td>
             </tr>
         {% endfor %}
