@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>MyToDo</title>
+</head>
+<body>
+<center>
+    <h1>MyToDo</h1>
+    <br>
+    <form action="/add" method="post">
+        <div>
+            <label>Enter a task</label>
+            <input type="text" name="name">
+            <button type="submit">Add Task</button>
+        </div>
+    </form>
+    <br><br>
+    <table>
+        <tbody>
+        <tr>
+            <th>Sno</th>
+            <th>To-Do</th>
+            <th>Status</th>
+        </tr>
+        {% for todo in todo_list %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ todo.name }}</td>
+                {% if todo.status_done == False %}
+                    <td>Not Done</td>
+                {% else %}
+                    <td>Done</td>
+                {% endif %}
+                <td>
+                    <button><a href="/status/{{ todo.todo_id }}">Update Status</a></button>
+                </td>
+                <td>
+                    <button><a href="/delete/{{ todo.todo_id }}">Delete</a></button>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</center>
+</body>
+</html>
