@@ -2,8 +2,7 @@
 
 ## Directions for installing and running the application
 1. Open Terminal.
-2. Visit the following link to get docker for your operating system
-   https://docs.docker.com/get-docker/
+2. Visit the following link to get docker for your operating system: https://docs.docker.com/get-docker/
 3. Pull the docker image from docker hub using the following command.
 ```bash
 $ docker pull shivam001/my-to-do
